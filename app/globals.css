@@ -24,3 +24,15 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.bold-text {
+  color: #12100E;
+}
+
+.light-text {
+  color: #444141;
+}
+
+.accent {
+  color: #2CA58D;
+}
