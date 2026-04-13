@@ -1,0 +1,25 @@
+.container {
+  margin: auto;
+  padding: auto;
+  max-width: 980px;
+}
+
+.grid-container {
+  display: grid;
+  margin: auto;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 225px));
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.grid-item {
+  border: 1px solid #dddada;
+}
+
+.left {
+  border-radius: 12px 0px 0px 12px;
+}
+
+.right {
+  border-radius: 0px 12px 12px 0px;
+}
