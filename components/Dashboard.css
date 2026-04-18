@@ -2,14 +2,13 @@
   margin: auto;
   padding: auto;
   max-width: 980px;
+  padding: 24px;
 }
 
 .grid-container {
   display: grid;
-  margin: auto;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 225px));
-  justify-content: center;
-  margin-bottom: 50px;
+  grid-template-columns: repeat(4, 1fr);
+  margin-bottom: 35px;
 }
 
 .grid-item {
@@ -22,4 +21,26 @@
 
 .right {
   border-radius: 0px 12px 12px 0px;
+}
+
+@media (max-width: 930px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .left {
+    border-radius: 12px 0px 0px 0px;
+  }
+
+  .mid-1 {
+    border-radius: 0px 12px 0px 0px;
+  }
+
+  .mid-2 {
+    border-radius: 0px 0px 0px 12px;
+  }
+
+  .right {
+    border-radius: 0px 0px 12px 0px;
+  }
 }

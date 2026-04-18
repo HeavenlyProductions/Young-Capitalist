@@ -12,7 +12,7 @@
 .logo-A::after {
     content: "";
   position: absolute;
-  background-color: #2CA58D;
+  background-color: hsl(180, 100%, 39%);
   width: 11px;
   height: 1px;
   border-radius: 30%;

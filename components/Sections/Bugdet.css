@@ -1,0 +1,14 @@
+.toggle::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background-color: white;
+  border-radius: 50%;
+  bottom: 2px;
+  left: 2px;
+  box-shadow:
+    rgba(0, 0, 0, 0.2),
+    0px,
+    1px 4px;
+}

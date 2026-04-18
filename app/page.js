@@ -1,5 +1,6 @@
 import Dashboard from "@/components/Dashboard";
 import Navbar from "@/components/Navbar.";
+import Sections from "@/components/Sections";
 import React from "react";
 
 const page = () => {
@@ -7,6 +8,7 @@ const page = () => {
     <div className="bg-white min-h-screen text-[#12100E]">
       <Navbar />
       <Dashboard />
+      <Sections />
     </div>
   );
 };
