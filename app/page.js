@@ -1,4 +1,5 @@
 import Dashboard from "@/components/Dashboard";
+import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar.";
 import Sections from "@/components/Sections";
 import React from "react";
@@ -9,6 +10,7 @@ const page = () => {
       <Navbar />
       <Dashboard />
       <Sections />
+      <Footer />
     </div>
   );
 };

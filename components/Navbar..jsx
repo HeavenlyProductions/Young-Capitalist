@@ -4,7 +4,7 @@ import ".//Navbar.css";
 const Navbar = () => {
   return (
     <div
-      className="flex justify-between items-center px-10 py-4.5 mb-10 
+      className="flex justify-between items-center px-10 py-4.5 mb-4 
     border-b border-b-gray-300"
     >
       <div>

@@ -12,3 +12,9 @@
     0px,
     1px 4px;
 }
+
+.grid-two {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+}
