@@ -30,11 +30,11 @@ body {
 }
 
 .bold-text {
-  color: #12100E;
+  color: hsl(30, 13%, 6%);
 }
 
 .light-text {
-  color: #6b6b6b;
+  color: hsl(0, 0%, 42%);
 }
 
 .accent {

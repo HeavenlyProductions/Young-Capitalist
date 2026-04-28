@@ -3,7 +3,7 @@ import ".//Dashboard.css";
 
 const Dashboard = () => {
   return (
-    <div className="container">
+    <div className="container-one">
       <div className="grid-one">
         <div className="p-5 grid-item left">
           <h3 className="font-extralight text-[8px] light-text">

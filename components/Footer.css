@@ -1,5 +1,6 @@
-.container {
+.container-foot {
     margin: auto;
     padding: auto;
     max-width: 980px;
+    padding: 24px;
 }

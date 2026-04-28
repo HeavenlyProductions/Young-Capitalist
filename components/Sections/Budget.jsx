@@ -4,7 +4,7 @@ import Input from "../UI/Input";
 
 const Budget = () => {
   return (
-    <div className="p-8 border border-gray-200 rounded-xl">
+    <div className="p-8 border border-gray-200 rounded-xl hidden">
       <div className="mb-3.5 rounded-xl text-[8px] light-text tracking-[3px]">
         ADJUST YOUR MONTHLY BUDGET
       </div>
@@ -97,7 +97,7 @@ const Budget = () => {
       </div>
       <div
         className="flex justify-between items-center mt-8 px-5 py-4.5 border border-[hsl(180,100%,39%)]
-        rounded-md text-[9px] bg-[hsl(180,100%,93%)] light-text tracking-widest"
+        rounded-lg text-[9px] bg-[hsl(180,100%,97%)] light-text tracking-widest"
       >
         MONTHLY BALANCE
         <span className="text-2xl font-extrabold accent">+₵0</span>

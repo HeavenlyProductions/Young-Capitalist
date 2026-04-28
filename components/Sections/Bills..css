@@ -1,11 +1,11 @@
-.container-one {
+.container-two {
   margin: auto;
   padding: auto;
   max-width: 980px;
   padding: 24px;
 }
 
-.grid-one {
+.grid-three {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   margin-bottom: 35px;
@@ -24,7 +24,7 @@
 }
 
 @media (max-width: 930px) {
-  .grid-one {
+  .grid-three {
     grid-template-columns: repeat(2, 1fr);
   }
 

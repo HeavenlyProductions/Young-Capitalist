@@ -1,11 +1,13 @@
 import React from "react";
+import "./Sections.css";
 import Budget from "./Sections/Budget";
-import './Sections.css'
+import Bills from "./Sections/Bills";
 
 const Sections = () => {
   return (
     <div className="container">
       <Budget />
+      <Bills />
     </div>
   );
 };
