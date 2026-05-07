@@ -65,17 +65,34 @@ const Savings = [
 const AreaChartComponent = () => {
   return (
     <ResponsiveContainer width="100%" height="100%">
-      <LineChart width={840} height={280} data={Savings}>
-        <YAxis />
-        <XAxis dataKey="name" />
+      <LineChart width={840} height={280} data={Savings} margin={{ right: 30 }}>
+        <YAxis
+          tickFormatter={(value) => `₵${value}`}
+          tick={{
+            fill: "#6b6b6b",
+            fontSize: 10,
+          }}
+          axisLine={{ stroke: "#d1d5dc" }}
+          strokeDasharray="5 5"
+        />
+        <XAxis
+          dataKey="name"
+          stroke="#d1d5dc"
+          tick={{
+            fill: "#6b6b6b",
+            fontSize: 10,
+          }}
+          axisLine={{ stroke: "#d1d5dc" }}
+          strokeDasharray="5 5"
+        />
         <CartesianGrid strokeDasharray="5 5" />
-        <Legend />
         <Tooltip content={<CustomToolTip />} />
 
         <Line
           type="monotone"
           dataKey="savings"
-          stroke="#007a7a"
+          stroke="#00c7c7"
+          strokeWidth={3}
           fill="#00c7c7"
         />
       </LineChart>
@@ -86,8 +103,10 @@ const AreaChartComponent = () => {
 const CustomToolTip = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
     return (
-      <div className="p-4 bg-[hsl(0,0%,100%)] border border-gray-300 
-      rounded-sm shadow-md">
+      <div
+        className="p-4 bg-[hsl(0,0%,100%)] border border-gray-300 
+      rounded-sm shadow-md"
+      >
         <p className="font-extrabold text-[14px] bold-text">{label}</p>
         <p>Total Savings: ₵{payload[0].value}</p>
       </div>

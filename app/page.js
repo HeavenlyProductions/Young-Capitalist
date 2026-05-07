@@ -6,7 +6,7 @@ import React from "react";
 
 const page = () => {
   return (
-    <div className="bg-[hsl(0,0%,96%)] min-h-screen text-[#12100E]">
+    <div className="bg-[hsl(0,0%,100%)] min-h-screen text-[#12100E]">
       <Navbar />
       <Dashboard />
       <Sections />
