@@ -62,7 +62,7 @@ const Savings = [
   },
 ];
 
-const AreaChartComponent = () => {
+const LineChartComponent = () => {
   return (
     <ResponsiveContainer width="100%" height="100%">
       <LineChart width={840} height={280} data={Savings} margin={{ right: 30 }}>
@@ -107,11 +107,11 @@ const CustomToolTip = ({ active, payload, label }) => {
         className="p-4 bg-[hsl(0,0%,100%)] border border-gray-300 
       rounded-sm shadow-md"
       >
-        <p className="font-extrabold text-[14px] bold-text">{label}</p>
-        <p>Total Savings: ₵{payload[0].value}</p>
+        <p className="p-1 font-extrabold text-[12px] bold-text tracking-wide">{label}</p>
+        <p className="text-[11px] accent">Savings: ₵{payload[0].value}</p>
       </div>
     );
   }
 };
 
-export default AreaChartComponent;
+export default LineChartComponent;

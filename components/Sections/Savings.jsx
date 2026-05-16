@@ -1,16 +1,16 @@
 import React from "react";
 import "./Savings.css";
-import AreaChartComponent from "../UI/AreaChart";
+import LineChartComponent from "../UI/LineChart";
 
 const Savings = () => {
   return (
-    <div className="mx-auto px-auto max-w-245 p-6">
+    <div className="mx-auto px-auto max-w-245 p-6 hidden">
       <div className="border border-gray-300 rounded-md p-7 mb-6">
         <div className="mb-5 font-extralight text-[10px] tracking-widest light-text">
           CUMULATIVE SAVINGS GROWTH
         </div>
         <div className="m-auto p-auto w-210 h-70">
-          <AreaChartComponent />
+          <LineChartComponent />
         </div>
       </div>
       <div className="mx-auto px-auto max-w-245 p-6 border border-gray-300 rounded-md">

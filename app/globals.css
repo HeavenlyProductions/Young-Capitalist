@@ -1,9 +1,5 @@
 @import "tailwindcss";
 
-* {
-  box-sizing: border-box;
-}
-
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -42,5 +38,5 @@ body {
 }
 
 .light-bg {
-  background-color: #F0F7F4;
+  background-color: #f0f7f4;
 }
