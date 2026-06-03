@@ -4,6 +4,7 @@ import Budget from "./Sections/Budget";
 import Bills from "./Sections/Bills";
 import Savings from "./Sections/Savings";
 import Goal from "./Sections/Goal";
+import Overview from "./Sections/Overview";
 
 const Sections = () => {
   return (
@@ -12,6 +13,7 @@ const Sections = () => {
       <Bills />
       <Savings />
       <Goal />
+      <Overview />
     </div>
   );
 };

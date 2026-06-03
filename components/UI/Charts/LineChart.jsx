@@ -107,8 +107,8 @@ const CustomToolTip = ({ active, payload, label }) => {
         className="p-4 bg-[hsl(0,0%,100%)] border border-gray-300 
       rounded-sm shadow-md"
       >
-        <p className="p-1 font-extrabold text-[12px] bold-text tracking-wide">{label}</p>
-        <p className="text-[11px] accent">Savings: ₵{payload[0].value}</p>
+        <p className="font-extrabold text-[12px] bold-text tracking-wide">{label}</p>
+        <p className="text-[12px] accent">Savings: ₵{payload[0].value}</p>
       </div>
     );
   }

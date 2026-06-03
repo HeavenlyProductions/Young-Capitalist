@@ -1,6 +1,6 @@
 import React from "react";
 import "./Savings.css";
-import LineChartComponent from "../UI/LineChart";
+import LineChartComponent from "../UI/Charts/LineChart";
 
 const Savings = () => {
   return (

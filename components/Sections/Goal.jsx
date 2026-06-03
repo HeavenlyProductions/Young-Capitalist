@@ -1,12 +1,12 @@
 import React from "react";
-import LineChartComponent from "../UI/LineChart";
+import LineChartComponent from "../UI/Charts/LineChart";
 import S_Input from "../UI/Secondary_Input";
 import "./Goal.css";
 
 const Goal = () => {
   return (
-    <div className="mx-auto px-auto max-w-245 p-6">
-      <div className="border border-gray-300 rounded-md p-7 mb-6">
+    <div className="mx-auto px-auto max-w-245 p-6 hidden">
+      <div className="p-7 mb-6 border border-gray-300 rounded-md">
         <div className="mb-2.5 text-[10px] font-extralight tracking-[3px] light-text">
           🎯 SET YOUR SAVINGS GOAL
         </div>
@@ -84,7 +84,7 @@ const Goal = () => {
             </div>
           </div>
         </div>
-        <div className="grid-six">
+        <div className="grid-six text-[10px] tracking-widest light-text">
           QUICK PRESETS
           <div className="w-208.5 mt-2 flex flex-wrap gap-2">
             <button
@@ -163,6 +163,9 @@ const Goal = () => {
       </div>
 
       <div className="border border-gray-300 rounded-md p-7 mb-6">
+        <div className="mb-5 font-extralight text-[10px] tracking-widest light-text">
+          SAVINGS VS GOAL - 12 - MONTH PROJECTION
+        </div>
         <div className="m-auto p-auto w-210 h-70">
           <LineChartComponent />
         </div>
