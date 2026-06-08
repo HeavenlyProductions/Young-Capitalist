@@ -28,6 +28,8 @@ const Bills = () => {
           <h1 className="font-extrabold text-2xl text-[hsl(0,90%,48%)]">5</h1>
         </div>
       </div>
+
+
       <div className="border border-gray-300 py-3.5 px-5 rounded-md">
         <div className="flex justify-between items-center tracking-wider mb-1.5">
           <h3 className="text-[9px] font-extralight light-text">
@@ -39,12 +41,16 @@ const Bills = () => {
         </div>
         <div className="h-2 w-100% bg-cyan-500 rounded-[50px]"></div>
       </div>
+
+
       <div
         className="flex items-center mt-5.5 py-3 px-4 text-[11px] bg-[hsl(0,100%,97%)] border 
       border-[hsl(0,100%,90%)] rounded-md text-[hsl(0,100%,45%)] font-extralight tracking-wider"
       >
         ⚠️ 5 overdue bills: Rent, Data Bundle, Electricity, Internet, Gym
       </div>
+
+      
       <div
         className=" mt-5 p-7 border 
          border-gray-300 rounded-md"

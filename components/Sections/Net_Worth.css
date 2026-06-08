@@ -1,0 +1,12 @@
+.grid-net {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(224px, 1fr));
+}
+
+.left {
+  border: 1px solid #dddada;
+}
+
+.right {
+  border: 1px solid #dddada;
+}
