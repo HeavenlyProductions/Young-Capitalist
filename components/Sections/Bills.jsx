@@ -3,7 +3,7 @@ import "./Bills..css";
 
 const Bills = () => {
   return (
-    <div className="container-two hidden">
+    <div className="container-two">
       <div className="grid-three">
         <div className="p-5 grid-item left">
           <h3 className="font-extralight text-[8px] light-text">TOTAL BILLS</h3>

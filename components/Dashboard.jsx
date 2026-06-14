@@ -1,7 +1,7 @@
 import React from "react";
 import ".//Dashboard.css";
 
-const Dashboard = () => {
+const Dashboard = ({tab,setTab}) => {
   return (
     <div className="container-one">
       <div className="grid-one">
@@ -42,12 +42,12 @@ const Dashboard = () => {
         className="flex justify-start px-5 py-2 gap-10 text-[10px] tracking-widest 
       font-extrabold light-text border-b-2 border-b-[#e6dddd]"
       >
-        <h2 className="px-6 py-1">OVERVIEW</h2>
-        <h2 className="accent p-1">BUDGET</h2>
-        <h2 className="px-6 py-1">SAVINGS</h2>
-        <h2 className="px-6 py-1">NET WORTH</h2>
-        <h2 className="px-6 py-1">BILLS</h2>
-        <h2 className="px-6 py-1">GOAL</h2>
+        <h2 onClick={() => setTab("Overview")} className="px-6 py-1">OVERVIEW</h2>
+        <h2 onClick={() => setTab("Budget")} className="accent p-1">BUDGET</h2>
+        <h2 onClick={() => setTab("Savings")} className="px-6 py-1">SAVINGS</h2>
+        <h2 onClick={() => setTab("Net_Worth")} className="px-6 py-1">NET WORTH</h2>
+        <h2 onClick={() => setTab("Bills")} className="px-6 py-1">BILLS</h2>
+        <h2 onClick={() => setTab("Goal")} className="px-6 py-1">GOAL</h2>
       </div>
     </div>
   );

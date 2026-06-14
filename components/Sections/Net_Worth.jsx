@@ -43,7 +43,7 @@ const Net_Worth = () => {
 
           <div>
             <div className="mb-3 flex gap-3">
-              <span className="px-1.75 py-0.5 bg-gray-200 border border-gray-300 rounded-md">
+              <span className="w-9 px-1.75 py-1 text-center bg-gray-200 border border-gray-300 rounded-md">
                 💸
               </span>
               <input
@@ -65,14 +65,17 @@ const Net_Worth = () => {
             </div>
 
             <div className="mb-3 flex gap-3">
-              <span className="px-1.75 py-0.5 bg-gray-200 border border-gray-300 rounded-md">
-                💸
+              <span
+                className="w-9 px-1.75 py-1 text-center bg-gray-200 border border-gray-300 
+              rounded-md"
+              >
+                📱
               </span>
               <input
                 className="w-41.5 px-2 text-xs tracking-widest border border-gray-300 rounded-md
                  shrink-0"
                 type="text"
-                defaultValue="Cash & Savings"
+                defaultValue="Mobile Money (Momo)"
               />
               <div className="flex gap-1 items-center text-xs">
                 <span className="text-[11px] text-gray-600">₵</span>
@@ -87,14 +90,14 @@ const Net_Worth = () => {
             </div>
 
             <div className="mb-3 flex gap-3">
-              <span className="px-1.75 py-0.5 bg-gray-200 border border-gray-300 rounded-md">
-                💸
+              <span className="w-9 px-1.75 py-1 text-center bg-gray-200 border border-gray-300 rounded-md">
+                📈
               </span>
               <input
                 className="w-41.5 px-2 text-xs tracking-widest border border-gray-300 rounded-md
                  shrink-0"
                 type="text"
-                defaultValue="Cash & Savings"
+                defaultValue="Investments"
               />
               <div className="flex gap-1 items-center text-xs">
                 <span className="text-[11px] text-gray-600">₵</span>
@@ -109,14 +112,14 @@ const Net_Worth = () => {
             </div>
 
             <div className="mb-3 flex gap-3">
-              <span className="px-1.75 py-0.5 bg-gray-200 border border-gray-300 rounded-md">
-                💸
+              <span className="w-9 px-1.75 py-1 text-center bg-gray-200 border border-gray-300 rounded-md">
+                🚘
               </span>
               <input
                 className="w-41.5 px-2 text-xs tracking-widest border border-gray-300 rounded-md
                  shrink-0"
                 type="text"
-                defaultValue="Cash & Savings"
+                defaultValue="Vehicle"
               />
               <div className="flex gap-1 items-center text-xs">
                 <span className="text-[11px] text-gray-600">₵</span>
@@ -131,14 +134,14 @@ const Net_Worth = () => {
             </div>
 
             <div className="flex mb-3 gap-3">
-              <span className="px-1.75 py-0.5 bg-gray-200 border border-gray-300 rounded-md">
-                💸
+              <span className="w-9 px-1.75 py-1 text-center bg-gray-200 border border-gray-300 rounded-md">
+                🏷️
               </span>
               <input
                 className="w-41.5 px-2 text-xs tracking-widest border border-gray-300 rounded-md
                  shrink-0"
                 type="text"
-                defaultValue="Cash & Savings"
+                defaultValue="Other Assets"
               />
               <div className="flex gap-1 items-center text-xs">
                 <span className="text-[11px] text-gray-600">₵</span>
@@ -153,7 +156,7 @@ const Net_Worth = () => {
             </div>
           </div>
 
-          <div className="mt-3 py-3 flex justify-between border-t border-t-gray-300">
+          <div className="mt-4 py-2.5 flex justify-between border-t border-t-gray-300">
             <span className="text-[10px] tracking-widest light-text">
               TOTAL ASSETS
             </span>
@@ -172,14 +175,14 @@ const Net_Worth = () => {
           </div>
 
           <div className="flex mb-3 gap-3">
-            <span className="px-1.75 py-0.5 bg-gray-200 border border-gray-300 rounded-md">
-              💸
+            <span className="w-9 px-1.75 py-1 text-center bg-gray-200 border border-gray-300 rounded-md">
+              🎓
             </span>
             <input
               className="w-41.5 px-2 text-xs tracking-widest border border-gray-300 rounded-md
                  shrink-0"
               type="text"
-              defaultValue="Cash & Savings"
+              defaultValue="Student Loan"
             />
             <div className="flex gap-1 items-center text-xs">
               <span className="text-[11px] text-gray-600">₵</span>
@@ -194,14 +197,14 @@ const Net_Worth = () => {
           </div>
 
           <div className="flex mb-3 gap-3">
-            <span className="px-1.75 py-0.5 bg-gray-200 border border-gray-300 rounded-md">
-              💸
+            <span className="w-9 px-1.75 py-1 text-center bg-gray-200 border border-gray-300 rounded-md">
+              💳
             </span>
             <input
               className="w-41.5 px-2 text-xs tracking-widest border border-gray-300 rounded-md
                  shrink-0"
               type="text"
-              defaultValue="Cash & Savings"
+              defaultValue="Credit Card"
             />
             <div className="flex gap-1 items-center text-xs">
               <span className="text-[11px] text-gray-600">₵</span>
@@ -216,14 +219,14 @@ const Net_Worth = () => {
           </div>
 
           <div className="flex mb-3 gap-3">
-            <span className="px-1.75 py-0.5 bg-gray-200 border border-gray-300 rounded-md">
-              💸
+            <span className="w-9 px-1.75 py-1 text-center bg-gray-200 border border-gray-300 rounded-md">
+              🏦
             </span>
             <input
               className="w-41.5 px-2 text-xs tracking-widest border border-gray-300 rounded-md
                  shrink-0"
               type="text"
-              defaultValue="Cash & Savings"
+              defaultValue="Personal Loan"
             />
             <div className="flex gap-1 items-center text-xs">
               <span className="text-[11px] text-gray-600">₵</span>
@@ -238,14 +241,14 @@ const Net_Worth = () => {
           </div>
 
           <div className="flex mb-3 gap-3">
-            <span className="px-1.75 py-0.5 bg-gray-200 border border-gray-300 rounded-md">
-              💸
+            <span className="w-9 px-1.75 py-1 text-center bg-gray-200 border border-gray-300 rounded-md">
+              📋
             </span>
             <input
               className="w-41.5 px-2 text-xs tracking-widest border border-gray-300 rounded-md
                  shrink-0"
               type="text"
-              defaultValue="Cash & Savings"
+              defaultValue="Other Debts"
             />
             <div className="flex gap-1 items-center text-xs">
               <span className="text-[11px] text-gray-600">₵</span>
@@ -259,7 +262,7 @@ const Net_Worth = () => {
             <span className="flex items-center light-text">x</span>
           </div>
 
-          <div className="mt-3 py-3 flex justify-between border-t border-t-gray-300">
+          <div className="mt-4 py-2.5 flex justify-between border-t border-t-gray-300">
             <span className="text-[10px] tracking-widest light-text">
               TOTAL LIABILITIES
             </span>

@@ -5,7 +5,7 @@ import "./Goal.css";
 
 const Goal = () => {
   return (
-    <div className="mx-auto px-auto max-w-245 p-6 hidden">
+    <div className="mx-auto px-auto max-w-245 p-6">
       <div className="p-7 mb-6 border border-gray-300 rounded-md">
         <div className="mb-2.5 text-[10px] font-extralight tracking-[3px] light-text">
           🎯 SET YOUR SAVINGS GOAL
