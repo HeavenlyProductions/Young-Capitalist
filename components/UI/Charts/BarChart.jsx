@@ -115,13 +115,15 @@ const BarChartComponent = () => {
 
         <Tooltip content={<CustomToolTip />} />
 
+        <Legend />
+
         <Bar
           dataKey="income"
           type="monotone"
           stroke="#00c7c7"
           strokeWidth={1}
           fill="#00c7c7"
-          radius={[2,2,0,0]}
+          radius={[2, 2, 0, 0]}
         />
         <Bar
           dataKey="expenses"
@@ -129,7 +131,7 @@ const BarChartComponent = () => {
           stroke="#000"
           strokeWidth={1}
           fill="#000"
-          radius={[2,2,0,0]}
+          radius={[2, 2, 0, 0]}
         />
         <Bar
           dataKey="savings"
@@ -137,7 +139,7 @@ const BarChartComponent = () => {
           stroke="#d1d5dc"
           strokeWidth={1}
           fill="#d1d5dc"
-          radius={[2,2,0,0]}
+          radius={[2, 2, 0, 0]}
         />
       </BarChart>
     </ResponsiveContainer>
@@ -156,10 +158,24 @@ const CustomToolTip = ({ active, payload, label }) => {
         </p>
         <p className="text-[12px] accent">Income: ₵{payload[0].value}</p>
         <p className="text-[12px] text-black">Expenses: ₵{payload[1].value}</p>
-        <p className="text-[12px] text-[#9fa0a1]">Savings: ₵{payload[2].value}</p>
+        <p className="text-[12px] text-[#9fa0a1]">
+          Savings: ₵{payload[2].value}
+        </p>
       </div>
     );
   }
+};
+
+const CustomLegend = ({ payload }) => {
+  return (
+    <ul style={{ fontSize: 8 }}>
+      {payload.map((entry, index) => (
+       <li key={index} style={{ color: entry.color }}>
+          {entry.value}
+        </li>
+      ))}
+    </ul>
+  );
 };
 
 export default BarChartComponent;

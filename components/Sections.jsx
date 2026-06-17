@@ -33,7 +33,7 @@ const Sections = ({ tab }) => {
     }
   };
 
-  return <div className="container fade">{renderSerction(tab)}</div>;
+  return <div className="container">{renderSerction(tab)}</div>;
 };
 
 export default Sections;
