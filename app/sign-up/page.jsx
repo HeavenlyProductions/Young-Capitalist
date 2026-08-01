@@ -1,19 +1,37 @@
 "use client";
 import Image from "next/image";
 import React, { useState } from "react";
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useCreateUserWithEmailAndPassword,
+  useSignInWithGoogle,
+} from "react-firebase-hooks/auth";
+import { auth } from "@/lib/firebase";
 
 const Page = () => {
   const [email, setEmail] = useState("");
 
   const [password, setPassword] = useState("");
 
-  const handleSignUp = async (email, password) => {
+  const [createUserWithEmailAndPassword] =
+    useCreateUserWithEmailAndPassword(auth);
+
+  const [signInWithGoogle] = useSignInWithGoogle(auth);
+
+  const handleSignUp = async () => {
     try {
-      await useCreateUserWithEmailAndPassword(email, password);
-      console.log("user created");
+      const res = await createUserWithEmailAndPassword(email, password);
+      setEmail("");
+      setPassword("");
     } catch (error) {
       console.error(error.message);
+    }
+  };
+
+  const handleGoogleSignUp = async () => {
+    try {
+      const res = await signInWithGoogle();
+    } catch (error) {
+      console.log(error.message);
     }
   };
 
@@ -36,7 +54,6 @@ const Page = () => {
         <input
           onChange={(e) => {
             setEmail(e.target.value);
-            console.log(email);
           }}
           type="email"
           placeholder="Email"
@@ -46,7 +63,6 @@ const Page = () => {
         <input
           onChange={(e) => {
             setPassword(e.target.value);
-            console.log(password);
           }}
           type="password"
           placeholder="Password"
@@ -54,16 +70,16 @@ const Page = () => {
           className="w-full px-4 py-2.5 bg-[hsl(0,0%,20%)] outline-0 shadow-sm"
         />
         <button
-          onClick={() => {
-            handleSignUp(email, password);
-          }}
+          onClick={handleSignUp}
           className="w-full flex justify-center items-center py-2 bg-[hsl(180,100%,30%)] 
         cursor-pointer"
         >
           Submit
         </button>
         <h1>OR</h1>
-        <p className="flex items-center gap-3.5 py-2.5 px-10 bg-[hsl(0,0%,20%)] cursor-pointer">
+        <p 
+        onClick={handleGoogleSignUp}
+        className="flex items-center gap-3.5 py-2.5 px-10 bg-[hsl(0,0%,20%)] cursor-pointer">
           <Image width={28} height={28} src="/social.png" alt="" />
           Continue with google
         </p>
