@@ -6,6 +6,7 @@ import {
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
 import { auth } from "@/lib/firebase";
+import { useRouter } from "next/navigation";
 
 const Page = () => {
   const [email, setEmail] = useState("");
@@ -17,11 +18,14 @@ const Page = () => {
 
   const [signInWithGoogle] = useSignInWithGoogle(auth);
 
+  const router = useRouter();
+
   const handleSignUp = async () => {
     try {
       const res = await createUserWithEmailAndPassword(email, password);
       setEmail("");
       setPassword("");
+      router.push("/");
     } catch (error) {
       console.error(error.message);
     }
@@ -76,15 +80,24 @@ const Page = () => {
         >
           Submit
         </button>
-        <h1>OR</h1>
-        <p 
-        onClick={handleGoogleSignUp}
-        className="flex items-center gap-3.5 py-2.5 px-10 bg-[hsl(0,0%,20%)] cursor-pointer">
+        <h1 className="cursor-default">OR</h1>
+        <p
+          onClick={handleGoogleSignUp}
+          className="flex items-center gap-3.5 py-2.5 px-10 bg-[hsl(0,0%,20%)] cursor-pointer"
+        >
           <Image width={28} height={28} src="/social.png" alt="" />
           Continue with google
         </p>
         <p>
-          Already have an account? <span className="accent">Sign-in</span>
+          Already have an account?{" "}
+          <a
+            href="/sign-in"
+            className="relative cursor-pointer accent after:w-0 after:h-0.5 after:absolute
+          after:bottom-0 after:left-0 after:bg-[hsl(180,100%,39%)] after:transition-all 
+          after:duration-100 hover:after:w-full"
+          >
+            Sign-in
+          </a>
         </p>
       </div>
     </div>
