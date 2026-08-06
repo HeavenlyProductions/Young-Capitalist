@@ -7,25 +7,30 @@ import {
 } from "react-firebase-hooks/auth";
 import { auth } from "@/lib/firebase";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const Page = () => {
   const [email, setEmail] = useState("");
 
   const [password, setPassword] = useState("");
 
-  const [createUserWithEmailAndPassword] =
+  const [createUserWithEmailAndPassword, loading, authError, user] =
     useCreateUserWithEmailAndPassword(auth);
 
-  const [signInWithGoogle] = useSignInWithGoogle(auth);
+  const [signInWithGoogle, googleLoading, googleError, googleUser] =
+    useSignInWithGoogle(auth);
 
   const router = useRouter();
 
-  const handleSignUp = async () => {
+  const handleSignUp = async (e) => {
+    e.preventDefault();
     try {
       const res = await createUserWithEmailAndPassword(email, password);
-      setEmail("");
-      setPassword("");
-      router.push("/");
+      if (res) {
+        setEmail("");
+        setPassword("");
+        router.push("/");
+      }
     } catch (error) {
       console.error(error.message);
     }
@@ -34,6 +39,9 @@ const Page = () => {
   const handleGoogleSignUp = async () => {
     try {
       const res = await signInWithGoogle();
+      if (res) {
+        router.push("/");
+      }
     } catch (error) {
       console.log(error.message);
     }
@@ -41,7 +49,8 @@ const Page = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center">
-      <div
+      <form
+        onSubmit={handleSignUp}
         className="flex flex-col items-center gap-4 px-10 py-8 bg-[hsl(0,0%,12%)] text-white rounded-lg
        z-10"
       >
@@ -55,6 +64,20 @@ const Page = () => {
           />
           <h1 className="flex items-center text-lg">Sign-up</h1>
         </div>
+        {(authError || googleError) && (
+          <p className="text-red-400 text-sm w-full text-center">
+            {authError?.message
+              ?.replace(/^Firebase:\s*/i, "")
+              .replace(/^Error\s*/i, "Error: ")
+              .replace(/[\(\)]/g, "")
+              .replace(/auth\//g, "") + " Please try again." ||
+              googleError?.message
+                ?.replace(/^Firebase\s*/i, "")
+                .replace(/^Error\s*/i, "Error:")
+                .replace(/[\(\)]/g, "")
+                .replace(/auth\//g, "") + " Please try again."}
+          </p>
+        )}
         <input
           onChange={(e) => {
             setEmail(e.target.value);
@@ -75,10 +98,11 @@ const Page = () => {
         />
         <button
           onClick={handleSignUp}
+          disabled={loading}
           className="w-full flex justify-center items-center py-2 bg-[hsl(180,100%,30%)] 
         cursor-pointer"
         >
-          Submit
+          {loading ? "Signing up" : "Submit"}
         </button>
         <h1 className="cursor-default">OR</h1>
         <p
@@ -90,16 +114,16 @@ const Page = () => {
         </p>
         <p>
           Already have an account?{" "}
-          <a
+          <Link
             href="/sign-in"
             className="relative cursor-pointer accent after:w-0 after:h-0.5 after:absolute
           after:bottom-0 after:left-0 after:bg-[hsl(180,100%,39%)] after:transition-all 
           after:duration-100 hover:after:w-full"
           >
             Sign-in
-          </a>
+          </Link>
         </p>
-      </div>
+      </form>
     </div>
   );
 };

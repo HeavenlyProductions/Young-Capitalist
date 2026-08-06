@@ -20,7 +20,8 @@ const Page = () => {
 
   const router = useRouter();
 
-  const handleSignIn = async () => {
+  const handleSignIn = async (e) => {
+    e.preventDefault();
     try {
       const res = await signInWithEmailAndPassword(email, password);
       if (res) {
@@ -36,6 +37,9 @@ const Page = () => {
   const handleGoogleSignUp = async () => {
     try {
       const res = await signInWithGoogle();
+      if (res) {
+        router.push("/");
+      }
     } catch (error) {
       console.log(error.message);
     }
@@ -43,7 +47,8 @@ const Page = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center">
-      <div
+      <form
+        onSubmit={handleSignIn}
         className="flex flex-col items-center gap-4 px-10 py-8 bg-[hsl(0,0%,12%)] text-white rounded-lg
          z-10"
       >
@@ -65,7 +70,8 @@ const Page = () => {
               .replace(/[\(\)]/g, "")
               .replace(/auth\//g, "") + " Please try again." ||
               googleError?.message
-                ?.replace(/^Firebase\s*/i, "").replace(/^Error\s*/i, "Error:")
+                ?.replace(/^Firebase\s*/i, "")
+                .replace(/^Error\s*/i, "Error:")
                 .replace(/[\(\)]/g, "")
                 .replace(/auth\//g, "") + " Please try again."}
           </p>
@@ -91,8 +97,8 @@ const Page = () => {
         <button
           onClick={handleSignIn}
           disabled={loading}
-          className="w-full flex justify-center items-center py-2 bg-[hsl(180,100%,30%)] 
-          cursor-pointer"
+          className="w-full flex justify-center items-center py-2 bg-[hsl(180,100%,30%)]
+           cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {loading ? "Signing in..." : "Submit"}
         </button>
@@ -115,7 +121,7 @@ const Page = () => {
             Sign-up
           </a>
         </p>
-      </div>
+      </form>
     </div>
   );
 };
