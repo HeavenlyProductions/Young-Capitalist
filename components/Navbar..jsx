@@ -1,7 +1,12 @@
 import React from "react";
 import ".//Navbar.css";
+import Image from "next/image";
+import { useSignOut } from "react-firebase-hooks/auth";
+import { auth } from "@/lib/firebase";
 
 const Navbar = () => {
+  const [signOut] = useSignOut(auth);
+
   return (
     <div
       className="flex justify-between items-center px-10 py-4.5 mb-4 
@@ -18,6 +23,10 @@ const Navbar = () => {
             Automate
           </h3>
         </div>
+      </div>
+      <div onClick={signOut} className="flex flex-col justify-center items-center cursor-pointer">
+        <Image width={32} height={32} src="/door.png" alt="" />
+        <p className="text-sm text-gray-700">Log out</p>
       </div>
       <div className="flex flex-col  ">
         <h3 className="light-text text-[10px] tracking-[4px] font-extralight">
