@@ -45,7 +45,9 @@ const Dashboard = ({ tab, setTab }) => {
         <h2
           onClick={() => setTab("Overview")}
           className={
-            tab === "Overview" ? "px-6 py-2 s-ui accent" : "px-6 py-2 s-ui"
+            tab === "Overview"
+              ? "px-6 py-2 s-ui accent cursor-pointer"
+              : "px-6 py-2 s-ui cursor-pointer"
           }
         >
           OVERVIEW
@@ -53,7 +55,9 @@ const Dashboard = ({ tab, setTab }) => {
         <h2
           onClick={() => setTab("Budget")}
           className={
-            tab === "Budget" ? "px-6 py-2 s-ui accent" : "px-6 py-2 s-ui"
+            tab === "Budget"
+              ? "px-6 py-2 s-ui accent cursor-pointer"
+              : "px-6 py-2 s-ui cursor-pointer"
           }
         >
           BUDGET
@@ -61,7 +65,9 @@ const Dashboard = ({ tab, setTab }) => {
         <h2
           onClick={() => setTab("Savings")}
           className={
-            tab === "Savings" ? "px-6 py-2 s-ui accent" : "px-6 py-2 s-ui"
+            tab === "Savings"
+              ? "px-6 py-2 s-ui accent cursor-pointer"
+              : "px-6 py-2 s-ui cursor-pointer"
           }
         >
           SAVINGS
@@ -69,7 +75,9 @@ const Dashboard = ({ tab, setTab }) => {
         <h2
           onClick={() => setTab("Net_Worth")}
           className={
-            tab === "Net_Worth" ? "px-6 py-2 s-ui accent" : "px-6 py-2 s-ui"
+            tab === "Net_Worth"
+              ? "px-6 py-2 s-ui accent cursor-pointer"
+              : "px-6 py-2 s-ui cursor-pointer"
           }
         >
           NET WORTH
@@ -77,7 +85,9 @@ const Dashboard = ({ tab, setTab }) => {
         <h2
           onClick={() => setTab("Bills")}
           className={
-            tab === "Bills" ? "px-6 py-2 s-ui accent" : "px-6 py-2 s-ui"
+            tab === "Bills"
+              ? "px-6 py-2 s-ui accent cursor-pointer"
+              : "px-6 py-2 s-ui cursor-pointer"
           }
         >
           BILLS
@@ -85,7 +95,9 @@ const Dashboard = ({ tab, setTab }) => {
         <h2
           onClick={() => setTab("Goal")}
           className={
-            tab === "Goal" ? "px-6 py-2 s-ui accent" : "px-6 py-2 s-ui"
+            tab === "Goal"
+              ? "px-6 py-2 s-ui accent cursor-pointer"
+              : "px-6 py-2 s-ui cursor-pointer"
           }
         >
           GOAL
