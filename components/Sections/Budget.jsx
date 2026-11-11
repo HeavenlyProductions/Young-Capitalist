@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./Bugdet.css";
-import Input from "../UI/Input";
 import { doc, setDoc, getDoc } from "firebase/firestore";
 import { auth, db } from "@/lib/firebase";
 import { onAuthStateChanged } from "firebase/auth";
@@ -25,8 +24,10 @@ const buildBudget = (value) =>
 
 const Budget = () => {
   const [income, setIncome] = useState("1200");
+  const [expenses, setExpenses] = useState("100");
   const [loaded, setLoaded] = useState(false);
   const saveTimer = useRef(null);
+  const lastSaved = useRef("1200");
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
@@ -75,6 +76,22 @@ const Budget = () => {
     saveBudget(income);
   };
 
+  const saveExpenses = (raw) => {
+    setExpenses(raw);
+    try {
+      const user = auth.currentUser
+      setDoc(doc(db, "expenses", ))
+    } catch (error) {
+      
+    }
+  };
+
+  const handleExpenseChange = (e) => {
+    const raw = e.target.value;
+    clearTimeout(saveTimer.current);
+    setTimeout(() => saveExpenses(raw), 500);
+  };
+
   return (
     <div className="mx-auto px-auto max-w-245 p-6">
       <div className="p-8 border border-gray-200 rounded-xl">
@@ -100,6 +117,7 @@ const Budget = () => {
                 type="number"
                 value={income}
                 disabled={!loaded}
+                autoComplete="off"
                 min={0}
                 step={1}
               />
@@ -115,60 +133,169 @@ const Budget = () => {
             </div>
           </div>
         </div>
+
         <div className="grid-two">
           <div className="flex flex-col gap-1">
             <label className="flex gap-2 text-[9px] py-1 text-gray-800">
               <span>🍲</span> FOOD & GROCERIES
             </label>
-            <Input />
+            <div className="flex items-center gap-1.5">
+              <span className="text-xs light-text">₵</span>
+              <input
+                type="number"
+                value={expenses}
+                disabled={!loaded}
+                autoComplete="off"
+                min={0}
+                step={1}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg outline-0
+         bold-text text-sm"
+              />
+            </div>
           </div>
           <div className="flex flex-col gap-1">
             <label className="flex gap-2 text-[9px] py-1 text-gray-800">
               <span>🏡</span> RENT & HOUSING
             </label>
-            <Input />
+            <div className="flex items-center gap-1.5">
+              <span className="text-xs light-text">₵</span>
+              <input
+                type="number"
+                value={expenses}
+                disabled={!loaded}
+                autoComplete="off"
+                min={0}
+                step={1}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg outline-0
+         bold-text text-sm"
+              />
+            </div>
           </div>
           <div className="flex flex-col gap-1">
             <label className="flex gap-2 text-[9px] py-1 text-gray-800">
               <span>🚘</span> TRANSPORT
             </label>
-            <Input />
+            <div className="flex items-center gap-1.5">
+              <span className="text-xs light-text">₵</span>
+              <input
+                type="number"
+                value={expenses}
+                disabled={!loaded}
+                autoComplete="off"
+                min={0}
+                step={1}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg outline-0
+         bold-text text-sm"
+              />
+            </div>
           </div>
           <div className="flex flex-col gap-1">
             <label className="flex gap-2 text-[9px] py-1 text-gray-800">
               <span>💡</span> UTILITIES
             </label>
-            <Input />
+            <div className="flex items-center gap-1.5">
+              <span className="text-xs light-text">₵</span>
+              <input
+                type="number"
+                value={expenses}
+                disabled={!loaded}
+                autoComplete="off"
+                min={0}
+                step={1}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg outline-0
+         bold-text text-sm"
+              />
+            </div>
           </div>
           <div className="flex flex-col gap-1">
             <label className="flex gap-2 text-[9px] py-1 text-gray-800">
               <span>🩹</span> HEALTHCARE
             </label>
-            <Input />
+            <div className="flex items-center gap-1.5">
+              <span className="text-xs light-text">₵</span>
+              <input
+                type="number"
+                value={expenses}
+                disabled={!loaded}
+                autoComplete="off"
+                min={0}
+                step={1}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg outline-0
+         bold-text text-sm"
+              />
+            </div>
           </div>
           <div className="flex flex-col gap-1">
             <label className="flex gap-2 text-[9px] py-1 text-gray-800">
               <span>🎮</span> ENTERTAINMENT
             </label>
-            <Input />
+            <div className="flex items-center gap-1.5">
+              <span className="text-xs light-text">₵</span>
+              <input
+                type="number"
+                value={expenses}
+                disabled={!loaded}
+                autoComplete="off"
+                min={0}
+                step={1}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg outline-0
+         bold-text text-sm"
+              />
+            </div>
           </div>
           <div className="flex flex-col gap-1">
             <label className="flex gap-2 text-[9px] py-1 text-gray-800">
               <span>🧥</span> CLOTHING
             </label>
-            <Input />
+            <div className="flex items-center gap-1.5">
+              <span className="text-xs light-text">₵</span>
+              <input
+                type="number"
+                value={expenses}
+                disabled={!loaded}
+                autoComplete="off"
+                min={0}
+                step={1}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg outline-0
+         bold-text text-sm"
+              />
+            </div>
           </div>
           <div className="flex flex-col gap-1">
             <label className="flex gap-2 text-[9px] py-1 text-gray-800">
               <span>💸</span> SAVINGS & INVESTMENTS
             </label>
-            <Input />
+            <div className="flex items-center gap-1.5">
+              <span className="text-xs light-text">₵</span>
+              <input
+                type="number"
+                value={expenses}
+                disabled={!loaded}
+                autoComplete="off"
+                min={0}
+                step={1}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg outline-0
+         bold-text text-sm"
+              />
+            </div>
           </div>
           <div className="flex flex-col gap-1">
             <label className="flex gap-2 text-[9px] py-1 text-gray-800">
               <span>🧾</span> OTHER EXPENSES
             </label>
-            <Input />
+            <div className="flex items-center gap-1.5">
+              <span className="text-xs light-text">₵</span>
+              <input
+                type="number"
+                value={expenses}
+                disabled={!loaded}
+                autoComplete="off"
+                min={0}
+                step={1}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg outline-0
+         bold-text text-sm"
+              />
+            </div>
           </div>
         </div>
         <div

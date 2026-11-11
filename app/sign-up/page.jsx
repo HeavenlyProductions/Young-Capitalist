@@ -23,7 +23,19 @@ const defaultBudget = {
   Sep: 1200,
   Oct: 1200,
   Nov: 1200,
-  Dec: 1200
+  Dec: 1200,
+};
+
+const defaultExpenses = {
+  entertainment: 100,
+  healthcare: 100,
+  clothing: 100,
+  foodAndGroceries: 100,
+  otherExpenses: 100,
+  rentAndHousing: 100,
+  savingsAndInvestments: 100,
+  transport: 100,
+  utilities: 100,
 };
 
 const errorMessages = {
@@ -49,6 +61,7 @@ const Page = () => {
     try {
       const res = await createUserWithEmailAndPassword(auth, email, password);
       await setDoc(doc(db, "budgets", res.user.uid), defaultBudget);
+      await setDoc(doc(db, "expenses", res.user.uid));
       setEmail("");
       setPassword("");
       router.push("/");

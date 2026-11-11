@@ -24,7 +24,11 @@ const Navbar = () => {
           </h3>
         </div>
       </div>
-      <div onClick={signOut} className="flex flex-col justify-center items-center cursor-pointer">
+      <div
+        onClick={signOut}
+        className="flex flex-col justify-center items-center
+       cursor-pointer"
+      >
         <Image width={32} height={32} src="/door.png" alt="" />
         <p className="text-sm text-gray-700">Log out</p>
       </div>
