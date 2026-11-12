@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./Bugdet.css";
-import { doc, setDoc, getDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 import { auth, db } from "@/lib/firebase";
 import { onAuthStateChanged } from "firebase/auth";
 
@@ -19,8 +19,13 @@ const MONTHS = [
   "Dec",
 ];
 
+const CATEGORIES = ["🍲", "🏡", "🚘", "💡", "🩹", "🎮", "🧥", "💸", "🧾"];
+
 const buildBudget = (value) =>
   Object.fromEntries(MONTHS.map((m) => [m, value]));
+
+const buildExpenses = (value) =>
+  Object.fromEntries(CATEGORIES.map((m) => [m, value]));
 
 const Budget = () => {
   const [income, setIncome] = useState("1200");
@@ -28,6 +33,8 @@ const Budget = () => {
   const [loaded, setLoaded] = useState(false);
   const saveTimer = useRef(null);
   const lastSaved = useRef("1200");
+  const saveTimerEx = useRef(null);
+  const lastSavedEx = useRef("100");
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
@@ -37,8 +44,14 @@ const Budget = () => {
       }
       try {
         const snap = await getDoc(doc(db, "budgets", user.uid));
+        const exSnap = await getDoc(doc(db, "expenses", user.uid));
         if (snap.exists()) {
-          setIncome(String(snap.data().Dec ?? 1200));
+          const saved = setIncome(String(snap.data().Dec ?? 1200));
+          lastSaved.current = saved;
+        }
+        if (exSnap.exists()) {
+          const savedEx = setExpenses(String(exSnap.data() ?? 100));
+          lastSavedEx.current = savedEx;
         }
       } catch (err) {
         console.error("Failed to load budget:", err);
@@ -49,6 +62,7 @@ const Budget = () => {
     return () => {
       unsubscribe();
       clearTimeout(saveTimer.current);
+      clearTimeout(saveTimerEx.current);
     };
   }, []);
 
@@ -57,7 +71,11 @@ const Budget = () => {
     const user = auth.currentUser;
     if (!user) return;
     try {
-      await setDoc(doc(db, "budgets", user.uid), buildBudget(Number(raw) || 0));
+      await setDoc(
+        doc(db, "budgets", user.uid),
+        buildBudget(Number(raw) || 0),
+        { merge: true },
+      );
       lastSaved.current = raw;
     } catch (err) {
       console.error("Failed to save budget:", err);
@@ -76,20 +94,34 @@ const Budget = () => {
     saveBudget(income);
   };
 
-  const saveExpenses = (raw) => {
-    setExpenses(raw);
+  const saveExpenses = async (raw) => {
+    if (lastSavedEx.current === raw) return;
+
+    const user = auth.currentUser;
+    if (!user) return;
+
     try {
-      const user = auth.currentUser
-      setDoc(doc(db, "expenses", ))
+      await setDoc(
+        doc(db, "expenses", user.uid),
+        buildExpenses(Number(raw) || 0),
+        { merge: true },
+      );
+      lastSavedEx.current = raw;
     } catch (error) {
-      
+      console.error(error);
     }
   };
 
   const handleExpenseChange = (e) => {
     const raw = e.target.value;
-    clearTimeout(saveTimer.current);
-    setTimeout(() => saveExpenses(raw), 500);
+    setExpenses(raw);
+    clearTimeout(saveTimerEx.current);
+    saveTimerEx.current = setTimeout(() => saveExpenses(raw), 500);
+  };
+
+  const handleBlurEx = () => {
+    clearTimeout(saveTimerEx.current);
+    setExpenses(expenses);
   };
 
   return (
@@ -143,6 +175,8 @@ const Budget = () => {
               <span className="text-xs light-text">₵</span>
               <input
                 type="number"
+                onChange={handleExpenseChange}
+                onBlur={handleBlurEx}
                 value={expenses}
                 disabled={!loaded}
                 autoComplete="off"

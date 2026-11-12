@@ -27,15 +27,15 @@ const defaultBudget = {
 };
 
 const defaultExpenses = {
-  entertainment: 100,
-  healthcare: 100,
-  clothing: 100,
-  foodAndGroceries: 100,
-  otherExpenses: 100,
-  rentAndHousing: 100,
-  savingsAndInvestments: 100,
-  transport: 100,
-  utilities: 100,
+  "🍲": 100,
+  "🏡": 100,
+  "🚘": 100,
+  "💡": 100,
+  "🩹": 100,
+  "🎮": 100,
+  "🧥": 100,
+  "💸": 100,
+  "🧾": 100,
 };
 
 const errorMessages = {
@@ -61,13 +61,14 @@ const Page = () => {
     try {
       const res = await createUserWithEmailAndPassword(auth, email, password);
       await setDoc(doc(db, "budgets", res.user.uid), defaultBudget);
-      await setDoc(doc(db, "expenses", res.user.uid));
+      await setDoc(doc(db, "expenses", res.user.uid), defaultExpenses);
       setEmail("");
       setPassword("");
       router.push("/");
     } catch (err) {
       setError(
-        errorMessages[err.code] || "Something went wrong. Please try again.",
+        errorMessages[err.code] ||
+          `Something went wrong (${err.code}). Please try again.`,
       );
     } finally {
       setLoading(false);
@@ -80,10 +81,16 @@ const Page = () => {
     try {
       const res = await signInWithPopup(auth, new GoogleAuthProvider());
       const ref = doc(db, "budgets", res.user.uid);
+      const exRef = doc(db, "expenses", res.user.uid);
       const snap = await getDoc(ref);
+      const exSnap = await getDoc(exRef);
       if (!snap.exists()) {
         await setDoc(ref, defaultBudget);
       }
+      if (!exSnap.exists()) {
+        await setDoc(exRef, defaultExpenses);
+      }
+
       router.push("/");
     } catch (err) {
       setError(
